@@ -4,7 +4,7 @@ This repository contains the code and notebooks used to compare six open-source
 decoder-based LLMs for binary suicide ideation classification on the Kaggle
 SuicideWatch dataset.
 
-The models were fine-tuned using LoRA and evaluated using the same data split
+The models were fine-tuned and evaluated using the same data split
 and training setup.
 
 ## Repository Structure
