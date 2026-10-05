@@ -36,8 +36,6 @@ comparison.
 | 5 | Llama-3.2-1B-Instruct | 0.9833 | 0.9885 | 0.9780 | 0.9832 |
 | 6 | SmolLM2-1.7B-Instruct | 0.9830 | 0.9820 | 0.9840 | 0.9830 |
 
-Full methodology, literature review, and discussion: see the accompanying report.
-
 ## Reproducing the Training
 
 Each notebook in `notebooks/` is self-contained and was run independently on
@@ -49,9 +47,6 @@ Kaggle (single T4 GPU). To reproduce:
 4. The resulting `final_model_<name>/` folder and `results/<name>.json`
    metrics file are produced in the notebook's output.
 
-**Note:** fine-tuned model weights are not included in this repository due to
-file size. They are available on request.
-
 ## Running the Streamlit Application
 
 1. Download a `final_model_<name>/` folder from a completed training run.
@@ -62,10 +57,4 @@ file size. They are available on request.
 pip install -r requirements.txt
 streamlit run app.py
 
-## Disclaimer
-
-This tool is a research prototype developed as part of an academic final year
-project. It is not validated for clinical or diagnostic use. Crisis-support
-resources are displayed by the application whenever a result is flagged, but
-the tool itself does not provide crisis support.
 
