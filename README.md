@@ -1,18 +1,21 @@
-# Suicide Ideation Detection — A Comparative Study of Open-Source LLMs
+# Suicide Ideation Detection - Open-Source LLM Comparison
 
-Research prototype comparing six open-source decoder-based LLMs, fine-tuned with LoRA,
-for binary suicide ideation classification on the Kaggle SuicideWatch dataset.
+This repository contains the code and notebooks used to compare six open-source
+decoder-based LLMs for binary suicide ideation classification on the Kaggle
+SuicideWatch dataset.
 
-**This is a research prototype, not a diagnostic or clinical tool.**
+The models were fine-tuned using LoRA and evaluated using the same data split
+and training setup.
 
 ## Repository Structure
-notebooks/ Kaggle training notebooks, one per candidate model
-app/ Streamlit research-prototype interface
 
-## Models Compared
+- `notebooks/` — Kaggle notebooks used to train and evaluate the six models.
+- `app/` — Streamlit application for testing the selected model.
+
+## Models
 
 | Model | Parameters | Fine-tuning |
-|---|---|---|
+|---|---:|---|
 | Qwen2.5-0.5B-Instruct | 0.5B | LoRA |
 | Phi-2 | 2.7B | LoRA |
 | OLMo-2-0425-1B-Instruct | 1B | LoRA |
@@ -20,15 +23,15 @@ app/ Streamlit research-prototype interface
 | Llama-3.2-1B-Instruct | 1B | LoRA |
 | SmolLM2-1.7B-Instruct | 1.7B | LoRA |
 
-All six models were selected for being absent or under-represented in the
-literature on suicide-risk detection, and were fine-tuned under an identical
-protocol (same fixed data split, same hyperparameters) for a controlled
-comparison.
+The six models were chosen because they are relatively under-represented in
+previous work on suicide-risk detection using this dataset. All models were
+trained using the same main settings to make the comparison as consistent as
+possible.
 
 ## Results
 
 | Rank | Model | Accuracy | Precision | Recall | F1 |
-|---|---|---|---|---|---|
+|---|---|---:|---:|---:|---:|
 | 1 | Phi-2 | 0.9847 | 0.9815 | 0.9880 | 0.9847 |
 | 2 | OLMo-2-1B-Instruct | 0.9840 | 0.9821 | 0.9860 | 0.9840 |
 | 3 | Qwen2.5-0.5B-Instruct | 0.9840 | 0.9840 | 0.9840 | 0.9840 |
@@ -36,25 +39,37 @@ comparison.
 | 5 | Llama-3.2-1B-Instruct | 0.9833 | 0.9885 | 0.9780 | 0.9832 |
 | 6 | SmolLM2-1.7B-Instruct | 0.9830 | 0.9820 | 0.9840 | 0.9830 |
 
-## Reproducing the Training
+## Training
 
-Each notebook in `notebooks/` is self-contained and was run independently on
-Kaggle (single T4 GPU). To reproduce:
+The training notebooks are in the `notebooks/` folder. Each notebook
+corresponds to one of the six models and was run on Kaggle using a single
+T4 GPU.
 
-1. Open a notebook on Kaggle, attach the `nikhileswarkomati/suicide-watch` dataset.
-2. Run all cells with `RUN_MODE = "smoke"` first to verify no errors.
-3. Set `RUN_MODE = "full"` and run via "Save & Run All (Commit)".
-4. The resulting `final_model_<name>/` folder and `results/<name>.json`
-   metrics file are produced in the notebook's output.
+To run a notebook:
 
-## Running the Streamlit Application
+1. Open the notebook on Kaggle.
+2. Add the `nikhileswarkomati/suicide-watch` dataset.
+3. Run the notebook with `RUN_MODE = "smoke"` first to check that the setup works.
+4. Set `RUN_MODE = "full"`.
+5. Run the notebook using **Save & Run All (Commit)**.
 
-1. Download a `final_model_<name>/` folder from a completed training run.
-2. Place it in the `app/` folder, next to `app.py`.
-3. Windows: double-click `run_app.bat` (creates a virtual environment and
-   launches the app automatically on first run).
-   Manual alternative:
+After training, the notebook produces a `final_model_<name>/` folder and a
+`results/<name>.json` file containing the evaluation results.
+
+## Streamlit Application
+
+The `app/` folder contains the Streamlit interface using the selected model.
+
+To run the application:
+
+1. Copy a `final_model_<name>/` folder from a completed training run into
+   the `app/` folder.
+2. Make sure it is located next to `app.py`.
+3. On Windows, double-click `run_app.bat`. The script creates the virtual
+   environment and starts the application on the first run.
+
+You can also start the application manually:
+
+```bash
 pip install -r requirements.txt
 streamlit run app.py
-
-
