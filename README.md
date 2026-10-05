@@ -14,14 +14,14 @@ and training setup.
 
 ## Models
 
-| Model | Parameters | Fine-tuning |
-|---|---:|---|
-| Qwen2.5-0.5B-Instruct | 0.5B | LoRA |
-| Phi-2 | 2.7B | LoRA |
-| OLMo-2-0425-1B-Instruct | 1B | LoRA |
-| Gemma-3-1B-it | 1B | LoRA |
-| Llama-3.2-1B-Instruct | 1B | LoRA |
-| SmolLM2-1.7B-Instruct | 1.7B | LoRA |
+| Model | Parameters | 
+|---|---:|
+| Qwen2.5-0.5B-Instruct | 0.5B |
+| Phi-2 | 2.7B | 
+| OLMo-2-0425-1B-Instruct | 1B | 
+| Gemma-3-1B-it | 1B | 
+| Llama-3.2-1B-Instruct | 1B | 
+| SmolLM2-1.7B-Instruct | 1.7B | 
 
 The six models were chosen because they are relatively under-represented in
 previous work on suicide-risk detection using this dataset. All models were
